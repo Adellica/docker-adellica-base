@@ -40,7 +40,7 @@ RUN echo /usr/local/lib > /etc/ld.so.conf.d/nanomsg.conf && ldconfig
 
 RUN chicken-install -s nanomsg
 
-RUN apt-get install -y git-core
+RUN apt-get install -y git-core pv
 # Clean up APT when done.
 # RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
