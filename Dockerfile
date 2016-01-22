@@ -45,5 +45,5 @@ RUN apt-get install -y git-core pv
 # RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY line2nn.scm /tmp/line2nn.scm
-RUN csc /tmp/line2nn.scm && install /tmp/line2nn /usr/bin
+RUN csc /tmp/line2nn.scm && install /tmp/line2nn /usr/bin && rm -f /tmp/*
 
