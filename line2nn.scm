@@ -1,7 +1,7 @@
 ;; Publish every line from stdin on a nanomsg socket. The socket is
 ;; given as a command-line argument
 
-(use nanomsg data-structures extras matchable)
+(use nanomsg data-structures extras matchable ports)
 
 (define cla command-line-arguments)
 
@@ -47,12 +47,9 @@
 (for-each (cut nn-bind    nnsock <>) binds)
 (for-each (cut nn-connect nnsock <>) connects)
 
-(let loop ()
-  (let ((line (read-line)))
-    (if (not (eof-object? line))
-        (begin
-          (nn-send nnsock line)
-          (loop)))))
+(port-for-each
+ (lambda (line) (nn-send nnsock line))
+ read-line)
 
 ;; Cleanup
 (nn-close nnsock)
