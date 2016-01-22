@@ -29,9 +29,9 @@ RUN chicken-install -s openssl
 
 # install nanomsg
 RUN mkdir -p /tmp/nanomsg && cd /tmp/nanomsg && \
-    wget http://download.nanomsg.org/nanomsg-0.5-beta.tar.gz && \
-    tar xf nanomsg-0.5-beta.tar.gz && \
-    cd nanomsg-0.5-beta && \
+    wget https://github.com/nanomsg/nanomsg/releases/download/0.8-beta/nanomsg-0.8-beta.tar.gz && \
+    tar xf nanomsg-0.8-beta.tar.gz && \
+    cd nanomsg-0.8-beta && \
     ./configure && \
     make install && \
     rm -r /tmp/nanomsg
